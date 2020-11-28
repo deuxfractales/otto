@@ -1,0 +1,20 @@
+{
+  "name": "spoon-splash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "(cd api && npm i); (cd frontend && npm i)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deuxfractales/spoon-splash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deuxfractales/spoon-splash/issues"
+  },
+  "homepage": "https://github.com/deuxfractales/spoon-splash#readme"
+}
