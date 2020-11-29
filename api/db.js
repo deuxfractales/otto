@@ -1,7 +1,7 @@
 async function db (fastify, options) {
   
   const MongoClient = require('mongodb').MongoClient;
-  const uri = "mongodb+srv://admin:adminben@cluster0.vb0ok.mongodb.net/otto-users?retryWrites=true&w=majority";
+  const uri = "mongodb+srv://admin:adminben@Cluster0.vb0ok.mongodb.net/otto-users?retryWrites=true&w=majority";
   const client = new MongoClient(uri, { useNewUrlParser: true });
 
 
@@ -27,6 +27,10 @@ async function db (fastify, options) {
     
     try {
       await client.connect(); 
+      const db = client.db('otto-users')
+      const collection = db.collection('customer')
+      collection.insertOne(newUser)
+      console.log(collection)
     } catch (e) {
       console.error(e);
     } finally {
