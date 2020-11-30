@@ -62,22 +62,19 @@ async function db (fastify, options) {
      
       let query = { username:`${repostInfo.user}` }
 
-      findUser = await collection0.findOne(query)
-      console.log(findUser)
+      addRepost = await collection1.insertOne(repostInfo)
+      
+      if (addRepost.insertedCount === 1){
+        console.log(`successfully added repost to db for user ${repostInfo.user} `)
+      }
 
-      //addRepost = await collection1.insertOne(repostInfo)
+      let update = { $push: {reposts: `${repostInfo.hash}`} }
       
-      //if (addRepost.insertedCount === 1){
-        //console.log(`successfully added repost to db for user ${repostInfo.user} `)
-      //}
-
-      //let update = { $push: {reposts: `${repostInfo.hash}`} }
+      accountUpdate = await collection0.updateOne(query, update)
       
-      //accountUpdate = await collection0.updateOne(query, update)
-      
-      //if (accountUpdate.modifiedCount === 1) {
-        //console.log(`successfully added repost to ${repostInfo.user}'s account`)
-      //} 
+      if (accountUpdate.modifiedCount === 1) {
+        console.log(`successfully added repost to ${repostInfo.user}'s account`)
+      } 
       // USE THIS FORMAT TO RUN "FIND" QUERY
       //findAll = await collection0.find(query).toArray(function (err,docs){
         //console.log(docs)
