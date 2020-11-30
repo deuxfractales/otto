@@ -11,7 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "create-hash": "^1.2.0",
+    "dayjs": "^1.9.6",
     "fastify": "^3.8.0",
+    "generate-password": "^1.5.1",
+    "moment": "^2.29.1",
     "mongodb": "^3.6.3",
     "nodemon": "^2.0.6"
   }
