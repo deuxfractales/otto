@@ -27,7 +27,8 @@ async function db (fastify, options) {
   fastify.post('/db/newUser', async (request,reply) => {
     newUser = {
       username: request.body.username,
-      password: request.body.password
+      password: request.body.password,
+      email: request.body.email
     } 
     
     try {
