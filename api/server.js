@@ -7,6 +7,7 @@ fastify.get('/', async (request, reply) => {
 })
 
 fastify.register(require("./db.js"))
+fastify.register(require("./auth"))
 
 const start = async () => {
   try {

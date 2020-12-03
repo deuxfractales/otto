@@ -35,7 +35,7 @@ async function db (fastify, options) {
       const db = client.db('otto-users')
       const collection = db.collection('customer')
       collection.insertOne(newUser)
-      console.log(collection)
+      // console.log(collection)
     } catch (e) {
       console.error(e);
     } finally {
