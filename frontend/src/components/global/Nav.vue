@@ -1,11 +1,11 @@
 <template>   
   <div class="nav">
     <div class="logo">
-      <h2>OTTO</h2>  
+      <h3 class="logoType">OOTO</h3>  
     </div >
     <div class="buttonHolder">
-      <router-link class="link" to="/"><h2>Home</h2></router-link> 
-      <router-link class="link" to="/about"><h2>About</h2></router-link>
+      <router-link class="link" to="/"><h3>Home</h3></router-link> 
+      <router-link class="link" to="/about"><h3>About</h3></router-link>
     </div>
     <div class="signInHolder">
       <router-link to="/signin"><h2>Sign In</h2> </router-link>
@@ -20,6 +20,9 @@
 
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {}
+  .logoType{
+  font-weight: 400
+  }
   .logo{
     display: flex;
     align-items: center;
@@ -29,16 +32,6 @@
     display: flex;
     flex-direction: row-reverse;
     margin-right: 30px;
-  }
-  button{
-    padding: 0px 20px ;
-    border: none;
-    background-color:#97979b;
-    border-radius: 8px
-  }
-  button:hover {
-    color: #ff0000;
-    background-color: white
   }
   .nav {
     display: grid;
@@ -55,7 +48,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0px  120px;
+    margin: 0px  10%;
     border-style: solid;
     border-width: 3%;
     border-color: #97979b;
