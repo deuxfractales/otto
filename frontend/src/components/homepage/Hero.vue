@@ -14,10 +14,6 @@
 </template>
 
 <style>
-   .fadeIn {
-	-webkit-animation: fade-in 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) 400ms both;
-	        animation: fade-in 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) 400ms both;
-  }
   ::placeholder{
     font-family: 'Epilogue', sans-serif;
     font-size: 20px 
@@ -80,13 +76,25 @@ export default {
       email: ''
     }
   },
-  methods:{ 
+  methods:{
+    test(){
+      axios.post('http://localhost:8406/testRequest')
+        .then(function (response) {
+          console.log(response)
+      })
+    },
     sendForm(){
       axios.post('http://localhost:8406/auth/newUser', {
         username: this.username,
         password: this.password,
         email: this.email
       })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }
