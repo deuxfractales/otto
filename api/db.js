@@ -23,6 +23,10 @@ async function db (fastify, options) {
       reply.send(databaseList)
     }
   })
+  
+  fastify.post('/db/findUser', async (request,reply) => {
+    reply.send(`this is the data on db: ${request.body}`)
+  })
 
   fastify.post('/db/newUser', async (request,reply) => {
     newUser = {

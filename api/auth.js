@@ -2,10 +2,38 @@ async function auth(fastify, options) {
   const Joi = require("joi");
   const bcrypt = require("bcrypt");
   const axios = require("axios");
+  const got = require("got")
+  const jwt = require("jsonwebtoken")
+  
 
   fastify.get("/auth", async (request, reply) => {
     return { hello: "world" };
   });
+  
+  fastify.post('/auth/login', async (request,reply) => {
+    
+    let dryUser = {
+      username: request.body.username,
+      password: request.body.password
+    }
+    //try {
+     //dbReply = await got.post('localhost:8406/db/findUser', dryUser)
+     //reply.send(dbReply.body)
+    //} catch (error) {
+      //console.log(error)
+    //}
+    
+    try {
+     const dbReply = await got('localhost:8406/db')
+     console.log(dbReply.body)
+    } catch (error) {
+      reply.send(error)
+      /* handle error */
+    }
+
+    
+    //reply.send(dryUser)
+  })
 
   fastify.post("/auth/newUser", async (request, reply) => {
     const schema = Joi.object({
