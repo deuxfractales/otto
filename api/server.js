@@ -4,6 +4,10 @@ const fastify = require('fastify')({
   logger: true
 })
 
+fastify.register(require('fastify-cookie'), {
+  secret: 'test' 
+})
+
 fastify.register(require('fastify-cors'), {
   // put your options here
   // origin: `http://${process.env.IP}:8080`,
@@ -21,6 +25,7 @@ fastify.get('/', async (request, reply) => {
 fastify.register(require("./db.js"))
 fastify.register(require("./auth"))
 fastify.register(require("./testRequest"))
+fastify.register(require("./updateDB"))
 
 const start = async () => {
   try {

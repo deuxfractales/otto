@@ -13,10 +13,12 @@
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "coinbase-commerce-node": "^1.0.4",
+    "cookie-parser": "^1.4.5",
     "create-hash": "^1.2.0",
     "dayjs": "^1.9.6",
     "dotenv": "^8.2.0",
     "fastify": "^3.8.0",
+    "fastify-cookie": "^5.1.0",
     "fastify-cors": "^5.1.0",
     "generate-password": "^1.5.1",
     "got": "^9.6.0",
@@ -24,6 +26,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongodb": "^3.6.3",
+    "mongoose": "^5.11.9",
     "nodemon": "^2.0.6"
   },
   "devDependencies": {
