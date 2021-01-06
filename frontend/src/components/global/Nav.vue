@@ -8,7 +8,7 @@
       <router-link class="link" to="/about"><h3>About</h3></router-link>
     </div>
     <div class="signInHolder">
-      <router-link to="/signin"><h2>Sign In</h2> </router-link>
+      <router-link to="login"><h2>Login</h2> </router-link>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@ async function db (fastify, options) {
   const uri = "mongodb+srv://admin:adminben@Cluster0.vb0ok.mongodb.net/otto-users?retryWrites=true&w=majority";
   const client = new MongoClient(uri, { 
     poolSize:10,
-    useNewUrlParser: true
+    useNewUrlParser: true,
   });
 
 
@@ -21,6 +21,31 @@ async function db (fastify, options) {
     } finally {
       await client.close();
       reply.send(databaseList)
+    }
+  })
+  
+  fastify.get('/db/findUser/:username', async (request,reply) => {
+    
+    try {
+      await client.connect()
+      const db = client.db('otto-users')
+      const collection = db.collection('customer')
+      
+      const query = { username: request.params.username}
+
+      const user = await  collection.findOne(query)
+      
+      if (user === null) {
+        reply.code(404).send('User Not Found')
+      } else {
+        reply.send(user.password)
+      }
+      //reply.send(user.password)
+    } catch (e) {
+      reply.send(e)
+    } finally {
+      await client.close()
+      /* be executed regardless of the try / catch result*/
     }
   })
 

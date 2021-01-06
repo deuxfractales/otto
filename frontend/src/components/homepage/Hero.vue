@@ -4,16 +4,28 @@
       <h1>Effortless Kijiji Ad Reposting</h1>
     </div>
     <div class="rightCol"> 
-      <h2 class="formTitle">Sign Up For a Free Trial Today</h2>
-        <input v-model="username" placeholder="username">
-        <input v-model="password" placeholder="password">
-        <input v-model="email" placeholder="email">
+      <h2 class="formTitle">Start Your Free Trial Today</h2>
+        <!--<input v-model="username" placeholder="username">-->
+        <!--<input v-model="password" placeholder="password">-->
+        <!--<input v-model="email" placeholder="email">-->
+      <ul>
+        <li>Selectable Region</li>
+        <li>Daily Automated Reposts</li>
+        <li>Unlimited Ads</li>
+      </ul>
+      <span class="softTitle">starting at:</span>
+      <h1>$9.99</h1>
+      <span class="softTitle">per month</span>
       <button @click="sendForm"> <h3>Register</h3></button> 
   </div>
   </div>
 </template>
 
-<style>
+<style scoped>
+  .softTitle{
+   font-size: 20px;
+   color: #ADADAD
+  }
   ::placeholder{
     font-family: 'Epilogue', sans-serif;
     font-size: 20px 
