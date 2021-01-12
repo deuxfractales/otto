@@ -20,9 +20,9 @@ async function auth(fastify, options) {
           reply.send("wrong password");
         } else {
           console.log("successfully verified credentials");
-          
+
           let payload = { username: username };
-         
+
           const accessToken = jwt.sign(payload, process.env.JWT_KEY, {
             algorithm: "HS256",
             expiresIn: process.env.JWT_EXPIRY,
@@ -33,21 +33,40 @@ async function auth(fastify, options) {
           });
           try {
             postData = {
-                username: username,
-                update: {
-                  refresh: refreshToken,
-                }
-              }
-            
-            const saveRefresh = await axios.post("http://localhost:8406/db/CRUDInfo", postData);
-             console.log(saveRefresh.data);
+              username: username,
+              refresh: refreshToken,
+            };
+
+            const saveRefresh = await axios.post(
+              "http://localhost:8406/updateDB",
+              postData
+            );
+
+            if (saveRefresh.data.code == 1001) {
+              reply
+
+                .setCookie("jwt", accessToken, {
+                  maxAge: process.env.JWT_EXPIRY,
+                })
+                .setCookie("username", username)
+                .send({
+                  msg: saveRefresh.data.msg,
+                  code: 1002,
+                });
+            } else {
+              reply
+                .setCookie("jwt", accessToken, {
+                  maxAge: process.env.JWT_EXPIRY,
+                })
+                .setCookie("username", username)
+                .send({
+                  msg: "refresh added to accout",
+                  code: 1003
+                });
+            }
           } catch (error) {
             console.log(error); /* handle error */
           }
-
-          reply
-            .setCookie("jwt", accessToken, { maxAge: process.env.JWT_EXPIRY })
-            .send("cookie added");
         }
       });
     } catch (error) {

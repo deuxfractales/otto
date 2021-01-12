@@ -11,9 +11,21 @@ import axios from 'axios'
 
 export default {
   name: 'LoginForm',
+  data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
-    postLogin() {
-      axios.post('localhost')
+    async postLogin() {
+      const user = {
+        username: this.username,
+        password: this.password
+      }
+      console.log(this.username)
+      const response = await axios.post(`${process.env.VUE_APP_API}/auth/login`, user)
+      console.log(response.data)
     }
   }
 }

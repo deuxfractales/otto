@@ -6,7 +6,7 @@
   </div>
   <div v-else>
     <RegisterForm />
-    <button @click="swapForm">Login</button>
+    <button @click="swapForm">Already Have an Account? Click Here to Login</button>
   </div>
 </template>
 

@@ -26,6 +26,8 @@ fastify.register(require("./db.js"))
 fastify.register(require("./auth"))
 fastify.register(require("./testRequest"))
 fastify.register(require("./updateDB"))
+fastify.register(require("./accountInfo"))
+
 
 const start = async () => {
   try {
