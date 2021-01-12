@@ -27,7 +27,7 @@ fastify.register(require("./auth"))
 fastify.register(require("./testRequest"))
 fastify.register(require("./updateDB"))
 fastify.register(require("./accountInfo"))
-
+fastify.register(require("./repostBot"))
 
 const start = async () => {
   try {
